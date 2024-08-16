@@ -1,5 +1,6 @@
 import { saveProjects, loadProjects } from './json.js';
 import CreateTodos from './create-todo.js';
+import { format } from 'date-fns';
 
 const Createproject = () =>{
 
@@ -56,14 +57,28 @@ const Createproject = () =>{
             todoList.appendChild(listItemDescription);
 
             const listItemDueDate = document.createElement('li');
-            listItemDueDate.textContent = `Due: ${todoItem.dueDate}`
+            listItemDueDate.classList.add("formatted-date");
+        
+   
+            const formattedDate = format(new Date(todoItem.dueDate), 'MM/dd/yyyy');
+            listItemDueDate.textContent = `Due: ${formattedDate}`;
             todoList.appendChild(listItemDueDate);
 
             const listItemPriority = document.createElement('li');
             listItemPriority.textContent = `Priority: ${todoItem.priority}`;
             todoList.appendChild(listItemPriority);
-  
+
+            const removeTodoBtn = document.createElement("button");
+            removeTodoBtn.classList.add("remove-todo-btn");
+            removeTodoBtn.textContent = "Remove To-do";
+            todoList.appendChild(removeTodoBtn);
+    
+            removeTodoBtn.addEventListener("click", () => {
+                projectWrapper.removeChild(todoList);
+                saveProjectsToStorage();
+            });
     }
+    
 
     document.addEventListener('DOMContentLoaded', () => {
         createTodo.loadTodosFromStorage();
@@ -209,6 +224,8 @@ const Createproject = () =>{
             addProject(projectName);
         });
     }
+
+    
 
     function saveProjectsToStorage() {
         const projects = [];

@@ -1,7 +1,6 @@
 import './styles.css';
 import Homepage from './home-page.js';
 import Projectspage from './projects-page.js';
-import './todo-page.js';
 import './create-todo.js';
 import { clearContent } from './clear-content.js';
 

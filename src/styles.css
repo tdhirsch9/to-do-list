@@ -271,7 +271,11 @@ button{
 }
 
 .todo-list{
+    display: grid;
     background-color: aquamarine;
     justify-self: center;
     align-self: center;
+    justify-items: center;
+    align-items: center;
+
 }
