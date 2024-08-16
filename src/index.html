@@ -11,7 +11,58 @@
 
     <div id="content">
 
+        
+        <nav>
+        <div class="sidebar">
+        <button class="home-btn side-bar-btn" type="button">Home</button>
+        <button class="view-projects-btn side-bar-btn" type="button">Projects</button>
+        <button class="view-todos-btn side-bar-btn" type="button">Todo</button>
+        
 
+        </div>
+        
+        </nav>
+        <dialog class="add-todo-dialog">
+            <form class="todo-info">
+                <div class="todo-input-container">
+                    <h2 class="todo-form-title">Add To-do</h2>
+                    <label for="title" class="title-label">Title: </label>
+                    <input type="text" id="title" name="title" class="title input" required>
+                    <label for="description" class="description-label">Description: </label>
+                    <input type="text" id="description" name="description" class="description input" required>
+                    <label for="due-date" class="due-date-label">Due date: </label>
+                    <input type="text" id="due-date" name="due-date" class="due-date input" required>
+                    <label for="priority" class="priority-label">Priority: </label>
+                    <select id="priority" class="priority input" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    <button type="button" class="close-dialog-btn">Cancel</button>
+                    <button type="submit" class="submit-todo-btn">Submit</button>
+                    </div>   
+
+                </form>
+            </dialog>
+
+            <dialog class="add-project-dialog">
+                <form class="project-name">
+                    <div class="input-container">
+                        <h2 class="add-project">Add Project</h2>
+                        <label for="project" class="new-project">New Project: </label>
+                        <input type="text" id="project" name="project" class="project-input" required>
+                        
+                    <button type="button" class="close-project-dialog-btn">Cancel</button>
+                    <button type="submit" class="submit-project-btn">Submit</button>
+                    </div>   
+                    </form>
+                </dialog>
+
+        <div class="main-content">
+
+
+
+        </div>
     </div>
 
 

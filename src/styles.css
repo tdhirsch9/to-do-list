@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body{
+    display: grid;
+    min-height: 100vh;
+}
+
+
+#content{
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 3fr);
+}
+
+nav{
+    display: grid;
+    background-color: lightblue;
+    grid-column: 1;
+}
+
+.sidebar{
+    display: grid;
+    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1fr);
+    align-items: center;
+}
+
+.side-bar-btn{
+    height: 30px;
+    width: 100%;
+    background-color: rgb(84, 183, 207);
+    border: none;
+}
+
+
+
+.main-content{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(min-content, 200px) minmax(min-content, auto);
+    grid-column: 2;
+}
+
+.welcome-message{
+    display: grid;
+    justify-items: center;
+    margin-top: 70px;
+    width: 100%;
+
+}
+
+.projects-title{
+    display: grid;
+    justify-self: center;
+    align-content: end;
+    margin-top: 70px;
+    font-weight: bold;
+    font-size: 2rem;
+    height: 100px;
+}
+
+.add-todo-item-btn{
+    border: none;
+    text-align: start;
+    margin-left: 60px;
+    font-size: 1.3rem;
+    width: 40%;
+    background-color: rgb(84, 255, 92);
+    border-top: 1px solid rgb(170, 170, 170);
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+
+.add-project-btn{
+    display: grid;
+    border: none;
+    margin-left: 60px;
+    font-size: 1.3rem;
+    width: 20%;
+    background-color: white;
+    height: 100px;
+    align-content: center;
+    background-color: aquamarine;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+button{
+    cursor: pointer;
+}
+
+.home-btn{
+    grid-row: 1;
+}
+
+.view-todo-projects{
+    grid-row: 2;
+}
+
+.view-todos-btn{
+    grid-row: 3;
+}
+
+.add-todo-dialog{
+    display: absolute;
+    top: 60%;
+    left: 30%;
+    width: 40%;
+}
+
+.add-project-dialog{
+    display: absolute;
+    top: 60%;
+    left: 30%;
+    width: 40%;
+}
+
+.input-container{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    align-content: center;
+    justify-content: center;
+}
+
+.add-project{
+    grid-row: 1;
+    justify-self: center;
+    justify-content: center;
+}
+
+.projects-container{
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-row: 2;
+    grid-column: 1;
+    gap: 20px;
+}
+
+.project-wrapper{
+    display: grid;
+    height: auto;
+    border-top: 1px solid rgb(180, 180, 180);
+    border-bottom:  1px solid rgb(180, 180, 180);
+    width: 90%;
+    justify-self: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 5px;
+}
+
+
+.project-title,
+.remove-btn {
+    grid-row: 1;
+    grid-column: 1;
+    height: 30px;
+    border: none;
+    align-content: center;
+}
+
+.project-title{
+    display: inline-block;
+    font-size: 2rem;
+    background-color: rgb(0, 158, 34);
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
+    width: auto;
+    max-width: 300px;
+    height: auto;
+    overflow-wrap: break-word;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.remove-btn{
+    display: grid;
+    background-color: rgb(255, 94, 66);
+    justify-self: end;
+    align-self: center;
+    width: 70px;
+    border-radius: 10px;
+}
+
+.new-project{
+    grid-row: 2;
+    align-self: center;
+}
+
+.project-input{
+    grid-row: 2;
+    height: 20px;
+    align-self: center;
+}
+
+.close-project-dialog-btn{
+    grid-row: 3;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.submit-project-btn{
+    grid-row: 3;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.todo-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.todo-input-container{
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.todo-form-title{
+    grid-row: 1;
+    grid-column: 1 / 3;
+    justify-self: center;
+    align-self: center;
+}
+
+.close-dialog-btn,
+.submit-todo-btn {
+    grid-row: 6;
+}
+
+.title,
+.title-label{
+    grid-row: 2;
+}
+
+.description,
+.description-label{
+    grid-row: 3;
+}
+
+.due-date,
+.due-date-label{
+    grid-row: 4;
+}
+
+.priority,
+.priority-label{
+    grid-row: 5;
+}
+
+.title-label{
+    justify-self: end;
+}
+
+.due-date-label{
+    justify-self: end;
+}
+
+.priority-label{
+    justify-self: end;
+}
+
+.todo-list{
+    background-color: aquamarine;
+    justify-self: center;
+    align-self: center;
+}
