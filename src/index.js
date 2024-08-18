@@ -25,22 +25,21 @@ const Webpage = (() => {
 
 
     const setupEventListeners = () => {
-
-        const homeBtn = document.querySelector(".home-btn")
-        const viewProjectsBtn = document.querySelector(".view-projects-btn")
+        
     
-
-
+        const homeBtn = document.querySelector(".home-btn");
+        const viewProjectsBtn = document.querySelector(".view-projects-btn");
+    
         homeBtn.addEventListener("click", loadHomePage);
-        viewProjectsBtn.addEventListener("click", loadProjectsPage);
-       
-
-    }
+        viewProjectsBtn.addEventListener("click", () => {
+            loadProjectsPage(); 
+        });
+    };
 
     const start = () => {
-        setupEventListeners()
-        loadHomePage()
-    }
+        setupEventListeners();
+        loadHomePage();
+    };
 
     start()
 

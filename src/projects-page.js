@@ -1,12 +1,12 @@
 import Createproject from './create-project.js';
 import Createtodo from './create-todo.js';
 import { clearContent } from './clear-content.js';
-import { saveProjects } from "./json";
-import { loadProjects } from "./json";
+import { saveProjects, loadProjects, saveTodos, loadTodos } from "./json";
 import { format } from 'date-fns';
+import { addProjectSubmitListener, removeProjectSubmitListener } from './eventListeners.js';
 
 const Projectspage = () => {
-
+    
 
     const createProject = Createproject()
 
@@ -14,22 +14,20 @@ const Projectspage = () => {
         createProject.createProjectPage();
     }
 
+    
+
     const createTodo = Createtodo()
 
 
 
 
 
-    const submitProject = document.querySelector('.submit-project-btn');
-    submitProject.addEventListener("click", (event) => {
+    const handleProjectSubmit = (event) => {
         event.preventDefault();
-        
-    
+        console.log('handleProjectSubmit triggered'); // Debugging line
         const projectNameInput = document.querySelector('.project-input');
-    
         const projectName = projectNameInput.value.trim();
-    
-        
+
         if (projectName) {
             createProject.addProject(projectName);
             const closeProjectDialog = document.querySelector('.add-project-dialog');
@@ -41,16 +39,20 @@ const Projectspage = () => {
                 projectNameInput.value = "";
             }, 100);
         }
-        
-    });
+    };
 
     const submitTodoProject = document.querySelector('.submit-todo-btn');
     submitTodoProject.addEventListener("click", (event) => {
+        console.log('submitTodoProject listener triggered'); // Debugging line
         const closeTodoDialog = document.querySelector('.add-todo-dialog');
         if (closeTodoDialog) {
             closeTodoDialog.close();
         }
     })
+
+    const submitProject = document.querySelector('.submit-project-btn');
+    console.log('submitProject button:', submitProject); // Check if button is selected correctly
+    addProjectSubmitListener(submitProject, handleProjectSubmit);
 
 
     function closeProjectDialog() {

@@ -245,12 +245,12 @@ button{
 
 .description,
 .description-label{
-    grid-row: 3;
+    grid-row: 4;
 }
 
 .due-date,
 .due-date-label{
-    grid-row: 4;
+    grid-row: 3;
 }
 
 .priority,
@@ -272,10 +272,57 @@ button{
 
 .todo-list{
     display: grid;
-    background-color: aquamarine;
     justify-self: center;
     align-self: center;
     justify-items: center;
     align-items: center;
+    gap: 10px;
+}
 
+.todo-item{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+    background-color: aquamarine;
+    transition: height 0.3s ease;
+}
+
+.minimized {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+    background-color: aquamarine;
+    height: 75px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.expanded {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+    background-color: aquamarine;
+    height: auto;
+    border-radius: 5px;
+}
+
+.toggle-todo-btn-expand{
+    background-color: green;
+    color: white;
+    grid-row: 1;
+    width: 100%
+}
+
+.toggle-todo-btn-minimize{
+    background-color: red;
+    color: white;
+    grid-row: 1;
+    width: 100%
+}
+
+.formatted-date{
+    grid-row: 3;
 }

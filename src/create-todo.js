@@ -11,16 +11,17 @@ const Createtodos = () => {
 
 
 
-function addTodoToProject(projectName, todoItem) {
-    if (!todos[projectName]) {
-        todos[projectName] = [];
+function addTodoToProject(projectId, todoItem) {
+    if (!todos[projectId]) {
+        todos[projectId] = [];
     }
-    todos[projectName].push(todoItem);
-    saveTodosToStorage(); // Optionally save to storage
+    todoItem.id = Date.now().toString();
+    todos[projectId].push(todoItem);
+    saveTodosToStorage(); // save to storage
 }
 
-function getTodosForProject(projectName) {
-    return todos[projectName] || [];
+function getTodosForProject(projectId) {
+    return todos[projectId] || [];
 }
 
 function saveTodosToStorage() {
@@ -33,6 +34,18 @@ function loadTodosFromStorage() {
         todos = savedTodos;
     }
 }
+
+function removeTodoFromProject(projectId, todoId) {
+    if (!todos[projectId]) return;
+
+    todos[projectId] = todos[projectId].filter(todo => todo.id !== todoId);
+    saveTodosToStorage();
+    if (todos[projectId].length === 0) {
+        delete todos[projectId];
+        console.log(`Removing empty project ${projectId}`);
+        saveTodosToStorage();
+    }
+}
     
 function addTodoItem(title, description, dueDate, priority){
     return{
@@ -43,11 +56,25 @@ function addTodoItem(title, description, dueDate, priority){
     }
     }
 
-    function openTodoForm(){
+    function openTodoForm(projectId) {
+        const form = document.querySelector('.todo-info');
+        if (form) {
+            form.dataset.projectId = projectId;
+        }
         const dialog = document.querySelector(".add-todo-dialog");
         if (dialog) {
             dialog.showModal();
         } 
+    }
+
+    function toggleTodoState(todoElement) {
+        if (todoElement.classList.contains('minimized')) {
+            todoElement.classList.remove('minimized');
+            todoElement.classList.add('expanded');
+        } else {
+            todoElement.classList.remove('expanded');
+            todoElement.classList.add('minimized');
+        }
     }
 
     return{
@@ -56,7 +83,9 @@ function addTodoItem(title, description, dueDate, priority){
         saveTodosToStorage,
         loadTodosFromStorage,
         addTodoItem,
-        openTodoForm
+        openTodoForm,
+        removeTodoFromProject,
+        toggleTodoState
     }
 
 
